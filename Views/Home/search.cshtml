@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "search";
+}
+
+<h2>search</h2>
+
+ <script>
+     $(document).ready(function () {
+         $('#search').click(function () {
+             var value = $('search1').val();
+
+             $("#table").empty();
+             $.getJSON('/Books/Searchu?search=' + value, function (data) {
+                 var g = '';
+                 $.each(data, function (index, item) {
+                     g = g + '<td></td>' + item.Name + '<td></td>' + '<td></td><img style="width: 70%;height: 200px; margin-top:20px;margin-bottom:10px;backgroung-size: 100% 100%" src="/images/' + item.Path + '"/></td></tr>'
+                 });
+                 $(g).appendTo($("#table"));
+             });
+         });
+     });
+
+        </script>
+ 
+		 <div class="top-nav-right">
+					    <input id="search1" type="text">
+						<button id="search" >Search</button>
+					
+				</div>
+				<div class="clear"> </div>
+			<div class="clear"> </div>
+
+              <table id="table">
+                  <tr>
+                      <td>
+
+                      </td>
+                  </tr>
+              </table>
